@@ -6,8 +6,8 @@ export default function AmountInput() {
   return (
     <>
       <button
-        onClick= {()=>setAmount(amount + 1)}
-      >+</button>
+        onClick= {()=>setAmount(amount - 1)}
+      >-</button>
       <input
         name="amount"
         type="number"
@@ -17,8 +17,8 @@ export default function AmountInput() {
         
       />
       <button
-        onClick={() => setAmount(amount - 1)}
-      >-</button>
+        onClick={() => setAmount(amount + 1)}
+      >+</button>
       <button>Add to cart</button>
     </>
   )

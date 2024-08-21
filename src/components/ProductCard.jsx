@@ -1,4 +1,5 @@
- import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 
 import AmountInput from "./AmountInput";
 
@@ -10,19 +11,19 @@ function ProductCard({ product }) {
         {product.category}
       </span>
       <div className="">
-        <a href="/">
+        <Link to={`/products/${product.id}`}>
           <img
             src={product.image}
             className=""
             style = {{width:"200px"}}
           />
-        </a>
+        </Link>
         
       </div>
       
-        <a href="" className=""> 
+        <Link to={`/products/${product.id}`}> 
           <h3 className="">{product.title}</h3>
-        </a>
+        </Link>
       
       <p className="">{product.price}</p>
       <AmountInput />

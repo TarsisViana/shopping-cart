@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react"
 import ProductCard from "../components/ProductCard"
-import getProducts from "../products"
+
+import { useOutletContext } from "react-router-dom"
 
 
 export default function ProductList() {
-  const [data, setData] = useState()
-
-  useEffect(() => {
-    async function getData() {
-      const data = await getProducts()
-      setData(data);
-    }
-
-    getData()
-  },[])
+  const data = useOutletContext()
 
 
   if(!data){
