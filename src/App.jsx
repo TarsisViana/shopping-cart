@@ -1,12 +1,13 @@
 import './App.css'
+import ProductList from './routes/ProductList'
 
-import ProductCard from './components/ProductCard'
+
 
 function App() {
 
   return (
     <>
-      <ProductCard />
+      <ProductList/>
     </>
   )
 }

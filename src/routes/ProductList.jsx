@@ -1,15 +1,31 @@
+import { useEffect, useState } from "react"
 import ProductCard from "../components/ProductCard"
+import getProducts from "../products"
 
 
+export default function ProductList() {
+  const [data, setData] = useState()
 
-export default function List() {
+  useEffect(() => {
+    async function getData() {
+      const data = await getProducts()
+      setData(data);
+    }
+
+    getData()
+  },[])
+
+
+  if(!data){
+    return "loading"
+  }
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="sr-only">Products</h2>
+    
+      <div className="">
+        <h2 className="">Products</h2>
 
         <div className="">
-          {products.map((product) => (
+          {data.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
@@ -17,6 +33,6 @@ export default function List() {
           ))}
         </div>
       </div>
-    </div>
+    
   )
 }
