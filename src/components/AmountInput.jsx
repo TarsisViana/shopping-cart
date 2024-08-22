@@ -1,31 +1,48 @@
 import { useState } from "react"
-import { Form, redirect } from "react-router-dom"
+import { Form, redirect, useOutletContext } from "react-router-dom"
 import PropTypes from 'prop-types'
 import {cartData, addToCart} from "../cart";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function action({ request }) {
+  
+
   const formData = await request.formData();
   const order = Object.fromEntries(formData);
-  addToCart([order])
+  order.amount = parseInt(order.amount)
+  addToCart(order)
   console.log(cartData)
   return redirect("/products");
 }
 
-export default function AmountInput({id}) {
-  const [amount, setAmount] = useState(1)
+export default function AmountInput({id, inicialAmount = 1}) {
+  const [amount, setAmount] = useState(inicialAmount)
+  const [...setMessage] = useOutletContext()
+
+  function handleSubtract() {
+    
+    if (amount === 0) return
+    else setAmount(amount - 1)
+  }
+
+  function handleSubmit() {
+    setAmount(1);
+    const func = setMessage[2];
+    func(true)
+  }
 
   return (
-    <Form method="post">
+    <Form method="post" onSubmit={handleSubmit}>
       <input 
         type="text"
         value= {id}
         name= "id"
-        style={{display: "none"}}
+        style={{ display: "none" }}
+        readOnly={true}
       />
       <button
       type="button"
-        onClick= {()=>setAmount(amount - 1)}
+        onClick= {(e) => handleSubtract(e)}
       >-
       </button>
       <input
@@ -33,8 +50,8 @@ export default function AmountInput({id}) {
         type="number"
         placeholder="0"
         value={amount}
-        onChange = {(e)=> setAmount(e.target.value)}
-      
+        onChange={(e) => setAmount(e.target.value)}
+        min="1"  
       />
       <button
       type="button"
@@ -50,5 +67,6 @@ export default function AmountInput({id}) {
 
 
 AmountInput.propTypes = {
-  id: PropTypes.number
+  id: PropTypes.number,
+  inicialAmount: PropTypes.number,
 } 

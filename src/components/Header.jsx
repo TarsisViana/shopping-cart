@@ -8,6 +8,7 @@ function Header({cart}) {
       <h1>Shopping cart</h1>
       <Link to="products">Products</Link>
       <Link to="/">Home</Link>
+      <Link to="checkout">cart</Link>
       <span>{cart.length}</span>
     </div>
   )

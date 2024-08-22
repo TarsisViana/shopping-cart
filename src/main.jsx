@@ -11,7 +11,10 @@ import ProductDetail,
  {loader as detailLoader} 
  from './routes/ProductDetail.jsx';
 
- import {action as addToCart} from './components/AmountInput.jsx'
+import {action as addToCart} from './components/AmountInput.jsx'
+import CartCheckOut,
+{ loader as checkoutLoader } from './routes/CartCheckOut.jsx';
+import { action as changeAmount } from './components/ChangeAmount.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +32,12 @@ const router = createBrowserRouter([
         element: <ProductDetail />,
         loader: detailLoader,
         action: addToCart
+      },
+      {
+        path: "checkout",
+        element: <CartCheckOut />,
+        loader: checkoutLoader,
+        action: changeAmount,
       }
     ]
   },

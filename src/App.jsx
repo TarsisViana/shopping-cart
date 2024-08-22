@@ -5,6 +5,8 @@ import Header from './components/Header'
 import getProducts from './products'
 
 import { getCartData } from './cart'
+import { useState } from 'react'
+import Message from './components/Message'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader() {
@@ -16,11 +18,14 @@ export async function loader() {
 function App() {
   const { productData, cart } = useLoaderData()
   
+  const [message, setMessage] = useState(false)
+  
   
   return (
     <>
+      { message ? <Message show={message} setShow={setMessage} /> : "" } 
       <Header cart={cart}/>
-      <Outlet context={[productData, cart]} />
+      <Outlet context={[productData, cart, setMessage]} />
     </>
   )
 }

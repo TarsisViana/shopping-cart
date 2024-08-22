@@ -38,7 +38,7 @@ export default function ProductDetail() {
         <span>{product.rating.rate} stars</span>
         <span>{product.rating.count} reviews</span>
       </div>
-      <AmountInput />
+      <AmountInput id={id} />
     </div>
     
   )
