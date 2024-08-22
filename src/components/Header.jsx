@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types"
 
-export default function Header() {
+function Header({cart}) {
+  
   return (
     <div className="Header">
       <h1>Shopping cart</h1>
       <Link to="products">Products</Link>
       <Link to="/">Home</Link>
+      <span>{cart.length}</span>
     </div>
   )
 }
+
+Header.propTypes = {
+  cart: PropTypes.array
+}
+
+export default Header

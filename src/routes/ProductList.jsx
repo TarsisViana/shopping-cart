@@ -3,11 +3,12 @@ import ProductCard from "../components/ProductCard"
 import { useOutletContext } from "react-router-dom"
 
 
+
+
 export default function ProductList() {
-  const data = useOutletContext()
+  const [productData] = useOutletContext()
 
-
-  if(!data){
+  if(!productData){
     return "loading"
   }
   return (
@@ -16,7 +17,7 @@ export default function ProductList() {
         <h2 className="">Products</h2>
 
         <div className="">
-          {data.map((product) => (
+          {productData.map((product) => (
             <ProductCard
               key={product.id}
               product={product}

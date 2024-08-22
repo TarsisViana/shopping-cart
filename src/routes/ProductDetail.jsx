@@ -8,13 +8,12 @@ export async function loader({ params }) {
 }
 
 export default function ProductDetail() {
-  const productData = useOutletContext();
+  const [productData] = useOutletContext();
   const id = useLoaderData();
   
   const [product] = productData.filter(value => {
     return value.id == id;
   }) 
-  console.log(product)
     
   return (
     <div>

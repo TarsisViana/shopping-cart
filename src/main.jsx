@@ -7,7 +7,11 @@ import {
 
 import App, {loader as appLoader} from './App.jsx'
 import ProductList from './routes/ProductList.jsx';
-import ProductDetail, {loader as detailLoader} from './routes/ProductDetail.jsx';
+import ProductDetail,
+ {loader as detailLoader} 
+ from './routes/ProductDetail.jsx';
+
+ import {action as addToCart} from './components/AmountInput.jsx'
 
 const router = createBrowserRouter([
   {
@@ -18,11 +22,13 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <ProductList />,
+        action: addToCart
       },
       {
         path: "products/:productId",
         element: <ProductDetail />,
-        loader: detailLoader
+        loader: detailLoader,
+        action: addToCart
       }
     ]
   },
