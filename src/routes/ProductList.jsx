@@ -1,9 +1,20 @@
+import styled from "styled-components"
 import ProductCard from "../components/ProductCard"
 
 import { useOutletContext } from "react-router-dom"
 
+const ShopSection = styled.div`
+  padding: 2rem 4rem;
+`
 
+const ListWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, calc(250px + 1rem));
+  grid-gap: 1rem;
+  justify-content: space-around;
 
+  max-width: 100%;
+`
 
 export default function ProductList() {
   const [productData] = useOutletContext()
@@ -13,18 +24,17 @@ export default function ProductList() {
   }
   return (
     
-      <div className="">
-        <h2 className="">Products</h2>
-
-        <div className="">
+      <ShopSection>
+        <h2>Products</h2>
+        <ListWrapper className="">
           {productData.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
             />
           ))}
-        </div>
-      </div>
+        </ListWrapper>
+      </ShopSection>
     
   )
 }

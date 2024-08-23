@@ -1,7 +1,19 @@
-div.product-card {
-  width: 250px
+:root {
+  --light-gray: ##e5e7eb;
+
+
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  /* fix for Chrome */
 }
 
-input {
-  width: 2rem;
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }

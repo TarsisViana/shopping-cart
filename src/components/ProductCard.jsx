@@ -1,33 +1,100 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
+import styled from 'styled-components'
 
 import AmountInput from "./AmountInput";
 
+const StyledCard = styled.div`
+  width: 250px;
+  border-radius: 10px;
+
+  display:flex;
+  flex-direction: column;
+  position: relative;
+
+  padding: 1rem .5rem; 
+
+  background-color: white;
+
+  box-shadow: 0 0 10px 0 #d4d4d4;
+`
+
+const ProductTitle = styled(Link)`
+  all: unset;
+  height: 2.5rem;
+  max-width: inherit;
+  margin-top: 1em;
+  padding: 0 .8rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: 1rem;
+  font-weight: 500;
+
+  cursor: pointer;
+`
+const StyledImgWrapper = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+`
+
+const StyledImg = styled.img`
+  height: 280px;
+  max-width: 250px;
+  object-fit: contain;
+`
+const CategorySpan = styled.span`
+  position: absolute;
+  right: 5px;
+  top:5px;
+
+  background-color: #e5e5e59e;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+
+  padding: .2rem .5rem;
+
+  font-size: .7rem;
+  color: #737373;
+
+`
+
+const PriceP = styled.p`
+  margin: .5rem 0 1rem 0;
+  padding: 0 .8rem;
+  text-align: right;
+`
 
 function ProductCard({ product }) {
   return (
-    <div key={product.id} className="product-card">
-      <span className="">
+    <StyledCard key={product.id}>
+      <CategorySpan className="">
         {product.category}
-      </span>
-      <div className="">
-        <Link to={`/products/${product.id}`}>
-          <img
-            src={product.image}
-            className=""
-            style = {{width:"200px"}}
-          />
-        </Link>
+      </CategorySpan>
+     
+      <StyledImgWrapper
+        to={`/products/${product.id}`}
         
-      </div>
+      >
+          <StyledImg
+            src={product.image}
+          />
+        </StyledImgWrapper>
+        
       
-        <Link to={`/products/${product.id}`}> 
-          <h3 className="">{product.title}</h3>
-        </Link>
       
-      <p className="">{product.price}</p>
+        <ProductTitle to={`/products/${product.id}`}> 
+          {product.title}
+        </ProductTitle>
+      
+      <PriceP>{product.price} €</PriceP>
       <AmountInput id={product.id}/>
-    </div>
+    </StyledCard>
   )
 }
 
