@@ -18,14 +18,14 @@ export async function loader() {
 function App() {
   const { productData, cart } = useLoaderData()
   
-  const [message, setMessage] = useState(false)
-  
+  const [message, setMessage] = useState(true)
+  console.log(message);
   
   return (
     <>
       { message ? <Message show={message} setShow={setMessage} /> : "" } 
-      <Header cart={cart}/>
-      <Outlet context={[productData, cart, setMessage]} />
+      <Header cart={cart} />
+      <Outlet context={[productData, cart, setMessage]} style={{zIndex:0}} />
     </>
   )
 }

@@ -1,12 +1,29 @@
 import { useEffect } from 'react'
 import PropTypes from 'prop-types'
-    
+import styled from 'styled-components';    
+
+const StyledDialog = styled.dialog`
+  position: fixed;
+  z-index: 3;
+
+  margin-top: 5px;
+  padding: .2rem .5rem;
+  height: 1rem;
+  
+
+  border-radius: 18px;
+  border: 2px solid #525252;
+  background-color: #f5f5f5e6;
+
+  font-size: .8rem;
+  line-height: 1rem;
+  color: #525252;
+`
+
 function Message({ show , setShow }) {
 
-  // On componentDidMount set the timer
   useEffect(() => {
     const timeId = setTimeout(() => {
-      // After 3 seconds set the show value to false
       setShow(false)
     }, 3000)
 
@@ -16,17 +33,17 @@ function Message({ show , setShow }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // If show is false the component will return null and stop here
   if (!show) {
     return null;
+  } else {
+    return (
+    <StyledDialog open={true}>
+      Item added to cart
+    </StyledDialog>
+  )
   }
 
-  // If show is true this will be returned
-  return (
-    <dialog open={true}>
-      Item added to cart.
-    </dialog>
-  )
+  
 }
 
 Message.propTypes = {

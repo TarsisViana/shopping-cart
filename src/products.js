@@ -1,5 +1,5 @@
 export default async function getProducts() {
-    const result = await fetch('https://fakestoreapi.com/products?limit=10');
+    const result = await fetch('https://fakestoreapi.com/products?limit=30');
     const data = await result.json()
 
     return data
