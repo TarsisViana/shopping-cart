@@ -1,6 +1,21 @@
 import { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components';    
+import styled, { keyframes } from 'styled-components';    
+
+const fadeInOut = keyframes`
+  from{
+    opacity: 0;
+  }
+  10% {
+    opacity: 100;
+  }
+  90%{
+    opacity:100;
+  }
+  to{
+    opacity:0;
+  }
+`
 
 const StyledDialog = styled.dialog`
   position: fixed;
@@ -18,6 +33,8 @@ const StyledDialog = styled.dialog`
   font-size: .8rem;
   line-height: 1rem;
   color: #525252;
+
+  animation: ${fadeInOut} 3s forwards;
 `
 
 function Message({ show , setShow }) {

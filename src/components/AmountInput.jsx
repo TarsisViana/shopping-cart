@@ -90,9 +90,12 @@ const BigButton = styled.button`
   font-size: 1.2rem;
 
   cursor:pointer;
+  transition: transform 400ms;
 
   &:hover{
     background-color: #171717df;
+    transform: scale(1.05) translateY(2px);
+    transition: transform 150ms;
   }
 `
 

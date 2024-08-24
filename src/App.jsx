@@ -18,8 +18,7 @@ export async function loader() {
 function App() {
   const { productData, cart } = useLoaderData()
   
-  const [message, setMessage] = useState(true)
-  console.log(message);
+  const [message, setMessage] = useState(false)
   
   return (
     <>
