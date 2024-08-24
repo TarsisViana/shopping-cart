@@ -34,6 +34,7 @@ const ProductTitle = styled(Link)`
 
   font-size: 1rem;
   font-weight: 500;
+  color: #404040;
 
   cursor: pointer;
 `
@@ -68,6 +69,8 @@ const PriceP = styled.p`
   margin: .5rem 0 1rem 0;
   padding: 0 .8rem;
   text-align: right;
+
+  color: #404040;
 `
 
 function ProductCard({ product }) {

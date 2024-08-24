@@ -16,12 +16,13 @@ export async function action({ request }) {
   return redirect("/products");
 }
 
+
 const InputWrapper = styled.div`
   display:flex;
   align-items:center;
   justify-content: center;
 
-  width:100%;
+  
 `
 
 const SmallInput = styled.input`
@@ -34,6 +35,8 @@ const SmallInput = styled.input`
 
   text-align: center;
   font-size: .8rem;
+  font-family: inherit;
+  color: #404040;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button{
@@ -93,10 +96,13 @@ const BigButton = styled.button`
   }
 `
 
-export default function AmountInput({id, inicialAmount = 1}) {
+export default function AmountInput({
+  id,
+  inicialAmount = 1
+}) {
   const [amount, setAmount] = useState(inicialAmount)
   const [...setMessage] = useOutletContext()
-
+  
   function handleSubtract() {
     
     if (amount === 0) return
@@ -110,7 +116,10 @@ export default function AmountInput({id, inicialAmount = 1}) {
   }
 
   return (
-    <Form method="post" onSubmit={handleSubmit}>
+    <Form
+      method="post"
+      onSubmit={handleSubmit}
+    >
       <input 
         type="text"
         value= {id}
@@ -155,5 +164,6 @@ export default function AmountInput({id, inicialAmount = 1}) {
 AmountInput.propTypes = {
   id: PropTypes.number,
   inicialAmount: PropTypes.number,
+  displaystyle: PropTypes.string,
 } 
 

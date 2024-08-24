@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Rating } from 'react-simple-star-rating'
 
 import ChangeAmount from './ChangeAmount'
 
@@ -20,7 +21,11 @@ export default function ProductBanner({ product }) {
         <h3 className="">{product.title}</h3>
         <p className="">{product.price}</p>
         <div>
-          <span>{product.rating.rate} stars</span>
+          <Rating
+            inicialValue={5}
+            readonly={true}
+            allowFraction={true}
+          />
           <span>{product.rating.count} reviews</span>
         </div>
         <ChangeAmount id={product.id} inicialAmount={product.amount}/>

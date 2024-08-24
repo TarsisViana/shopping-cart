@@ -10,7 +10,7 @@ const ShopSection = styled.div`
 const ListWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, calc(250px + 1rem));
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   justify-content: space-around;
 
   max-width: 100%;
