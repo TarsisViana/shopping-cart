@@ -24,7 +24,6 @@ const InputWrapper = styled.div`
 
   
 `
-
 const SmallInput = styled.input`
   box-sizing:border-box;
   appearance:none;
@@ -68,7 +67,6 @@ const SmallButton = styled.button`
 const PlusButton = styled(SmallButton)`
   border-radius: 0 5px 5px 0;
 `
-
 const StyledSvg = styled.svg`
   width: 1rem;
   height: 1rem;

@@ -7,11 +7,15 @@ const HeaderWrapper = styled.div`
   display:flex;
   gap :1.5rem;
 
+  height: 72px;
+  box-sizing: border-box;
+
   z-index:1;
   position: sticky;
   top: 0;
   padding: 1rem 2rem;
 
+ 
   background-color: #171717;
 
   color: white;

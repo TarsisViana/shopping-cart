@@ -95,7 +95,7 @@ function ProductCard({ product }) {
           {product.title}
         </ProductTitle>
       
-      <PriceP>{product.price} €</PriceP>
+      <PriceP>{numberFormatter.format(product.price)} €</PriceP>
       <AmountInput id={product.id}/>
     </StyledCard>
   )
@@ -115,3 +115,9 @@ ProductCard.propTypes = {
 
 export default ProductCard
 
+
+const numberFormatter = new Intl.NumberFormat('en-US', {
+  style: 'decimal',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+});
