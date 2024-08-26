@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { getCartData } from "../cart"
 import ProductBanner from "../components/ProductBanner";
 import styled from "styled-components";
@@ -63,6 +63,9 @@ const OrderSumTitle = styled.h3`
   font-size: 1.4rem;
 `
 const GreyText = styled.p`
+  display: flex;
+  justify-content:space-between;
+
   color: #404040;
 
   margin:0;
@@ -70,11 +73,41 @@ const GreyText = styled.p`
 
   background-color: #e5e5e5;
 `
-
-const OrderTotal = styled.p`
-  margin-left: 1rem;
+const DeliveryFee = styled(GreyText)`
+  padding-bottom: 1rem;
 `
 
+const OrderTotal = styled.p`
+  display:flex;
+  justify-content: space-between;
+
+  margin: 1rem;
+  margin-bottom: 1.5rem;
+
+  font-weight: bold;
+`
+const OrderButton = styled.button`
+  display:block;
+  margin: 0 auto 1rem;
+  width: 200px;
+  height: 2rem;
+
+  background-color:#171717;
+  border: none;
+  border-radius: 10px;
+
+  color: white;
+  font-size: 1.2rem;
+
+  cursor:pointer;
+  transition: transform 400ms;
+
+  &:hover{
+    background-color: #262626;
+    transform: scale(1.05);
+    transition: transform 150ms;
+  }
+`
 export default function CartCheckOut(){
   const orderData = useLoaderData();
   
@@ -107,14 +140,21 @@ export default function CartCheckOut(){
       </ListWrapper>
       <OrderSumWrapper>
         <OrderSumTitle>Order Summary</OrderSumTitle>
-        <GreyText>Subtotal: {numberFormatter.format(subtotal)} €</GreyText>
-        <GreyText>Delivery fee: 0 €</GreyText>
-        <OrderTotal>Total:  {numberFormatter.format(subtotal)} €</OrderTotal>
-        <Link to>
-          <div>
-            Order
-          </div>
-        </Link>
+          <GreyText>
+            <span>Subtotal: </span>
+            <span>{numberFormatter.format(subtotal)} €</span>
+          </GreyText>
+          <DeliveryFee>
+            <span>Delivery fee:</span>
+            <span>{numberFormatter.format(0)} €</span> 
+          </DeliveryFee>
+          <OrderTotal>
+            <span>Total: </span>
+            <span>{numberFormatter.format(subtotal)} €</span>
+          </OrderTotal>
+        <OrderButton>
+            Place order
+        </OrderButton>
       </OrderSumWrapper>
       
       </FlexWrapper>
